@@ -15,7 +15,6 @@ export interface iDropdownState {
 	isopen: boolean;
 }
 
-
 export abstract class Dropdown<PROP extends iDropdownProps, STATE extends iDropdownState> extends React.Component<PROP, STATE> {
 
 	abstract getStateFromProps(props: PROP): STATE;
@@ -33,9 +32,9 @@ export abstract class Dropdown<PROP extends iDropdownProps, STATE extends iDropd
 	}
 
 	async componentDidMount() {
-		// подписку на события делаем именно тут, так как сразу может прилететь событие, а мы не примонтированы и вызвать изменение стэйта будет опа
 		this.subscribeEvents(this.props);
 	}
+    
 	async componentWillUnmount() {
 		EExchange.unsubscribeEvent(['open-dropdown'], this.subscribeOpenDropdownCallback);
 	}
