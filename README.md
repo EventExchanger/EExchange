@@ -2,7 +2,7 @@
 
 ```typescript
 import * as React from 'react';
-import { EExchange, CB } from '../helpers/EExchange';
+import { EExchange, CB } from 'eexchange';
 
 export interface iDropdownProps {
 	test?: boolean;
@@ -68,5 +68,18 @@ export abstract class Dropdown<PROP extends iDropdownProps, STATE extends iDropd
 
 
 	abstract render(): React.ReactNode;
+}
+
+export class DropdownTest extends Dropdown<iDropdownProps, iDropdownState> {
+    getStateFromProps(props: iDropdownProps): iDropdownState {
+		return { isopen: props.isopen || false };
+    }
+
+	render(): React.ReactNode {
+		return <div className="" style={{ display: 'block', float: 'left' }}>
+			<a href="#" onClick={this.toggle}>{this.props.title}</a>
+			<div style={{ display: this.state.isopen ? 'block' : 'none', position: 'absolute' }}>{this.props.body}</div>
+		</div>;
+	}
 }
 ```
