@@ -1,0 +1,38 @@
+{
+  "name": "reactyii.react",
+  "version": "1.26.3",
+  "module": "./lib/esm/lib.js",
+  "types": "./lib/esm/lib.d.ts",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EventExchanger/EExchange"
+  },
+  "dependencies": {
+    "@types/node": "^16.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "buildlib": "yarn buildlib:esm",
+    "buildlib:esm": "tsc --build tsconfig.d.ts.json",
+    "serve": "serve -c ../serve.json lib"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
+  }
+}
