@@ -1,5 +1,5 @@
 {
-  "name": "EExchange",
+  "name": "eexchange",
   "version": "1.27.2",
   "module": "./lib/esm/EExchange.js",
   "types": "./lib/esm/EExchange.d.ts",
