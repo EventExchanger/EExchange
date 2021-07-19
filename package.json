@@ -1,6 +1,6 @@
 {
-  "name": "EventExchange",
-  "version": "1.27.1",
+  "name": "EExchange",
+  "version": "1.27.2",
   "module": "./lib/esm/EExchange.js",
   "types": "./lib/esm/EExchange.d.ts",
   "files": [
