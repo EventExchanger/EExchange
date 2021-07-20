@@ -1,5 +1,9 @@
 ## Usage
 
+1. yarn create react-app eexchanger.reacttest --template typescript
+2. yarn add eexchange
+
+
 ```typescript
 import * as React from 'react';
 import { EExchange, CB } from 'eexchange';
