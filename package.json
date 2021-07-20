@@ -1,6 +1,6 @@
 {
   "name": "eexchange",
-  "version": "1.27.2",
+  "version": "1.27.3",
   "module": "./lib/esm/EExchange.js",
   "types": "./lib/esm/EExchange.d.ts",
   "files": [
