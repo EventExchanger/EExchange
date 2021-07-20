@@ -1,4 +1,4 @@
-export interface Hash<T> { [s: string]: T; }
+interface Hash<T> { [s: string]: T }
 
 export type CB<T> = (event: iEvent<T>) => void;
 
@@ -22,10 +22,9 @@ const SUBS: iSubs = {
 };
 
 
-export class EExchange {
+class EExchange {
 
-    static subscribeEvent<T>(groups: string[], cb: CB<T>): void {
-        Console.log('.....SUBSCRIBE_EVENT', groups);
+    subscribeEvent<T>(groups: string[], cb: CB<T>): void {
 
         for (let i = 0, l = groups.length; i < l; i++) {
             let group = SUBS.callbacks[groups[i]];
@@ -37,34 +36,24 @@ export class EExchange {
         }
     }
 
-    static unsubscribeEvent<T>(groups: string[], cb: CB<T>): void {
-        //if (typeof document === 'undefined') return; // проверка нужна для предотвращения сериализации ссылок при серверном рендеринге
+    unsubscribeEvent<T>(groups: string[], cb: CB<T>): void {
 
         for (let i = 0, l = groups.length; i < l; i++) {
-            let group = SUBS.callbacks[groups[i]];
+            const group = SUBS.callbacks[groups[i]];
             if (typeof group === 'undefined') {
                 break;
             }
             SUBS.callbacks[groups[i]] = group.filter((_cb) => _cb !== cb);
         }
     }
-    static raiseEvent<T>(event: iEvent<T>): void {
+    raiseEvent<T>(event: iEvent<T>): void {
         const group = event.name;
-        Console.log('...STORE=', SUBS);
-        Console.log('...raiseEvent', group, event);
         const egroup = SUBS.callbacks[group];
-        Console.log('...raiseEvent!', group, egroup);
 
         if (typeof egroup !== 'undefined') {
             egroup.map((_cb) => _cb(event));
         }
     }
 }
-
-export class Console {
-    public static log = process.env.NODE_ENV === 'development' ? console.log : (arg: any, ...args: any[]) => { /* empty */ };
-    public static info = process.env.NODE_ENV === 'development' ? console.info : (arg: any, ...args: any[]) => { /* empty */ };
-    public static error = console.error;//process.env.NODE_ENV === 'development' ? console.error : (arg: any, ...args: any[]) => { /* empty */ };
-    public static debug = process.env.NODE_ENV === 'development' ? console.debug : (arg: any, ...args: any[]) => { /* empty */ };
-    public static warn = process.env.NODE_ENV === 'development' ? console.warn : (arg: any, ...args: any[]) => { /* empty */ };
-}
+const eexchange = new EExchange();
+export default eexchange;
