@@ -6,7 +6,9 @@
 
 ```typescript
 import * as React from 'react';
-import { EExchange, CB } from 'eexchange';
+import { CB } from 'eexchange';
+import eexchange from 'eexchange';
+
 
 export interface iDropdownProps {
     isopen?: boolean;
@@ -35,11 +37,11 @@ export abstract class Dropdown<PROP extends iDropdownProps, STATE extends iDropd
     }
 
     async componentDidMount() {
-        EExchange.subscribeEvent(['open-dropdown'], this.subscribeOpenDropdownCallback);
+        eexchange.subscribeEvent(['open-dropdown'], this.subscribeOpenDropdownCallback);
     }
     
     async componentWillUnmount() {
-        EExchange.unsubscribeEvent(['open-dropdown'], this.subscribeOpenDropdownCallback);
+        eexchange.unsubscribeEvent(['open-dropdown'], this.subscribeOpenDropdownCallback);
     }
 
     subscribeOpenDropdownCallback: CB<void> = (t) => {
@@ -61,7 +63,7 @@ export abstract class Dropdown<PROP extends iDropdownProps, STATE extends iDropd
     open() {
         this.setState({ isopen: true });
 
-        EExchange.raiseEvent({ initiator: this, name: 'open-dropdown' });
+        eexchange.raiseEvent({ initiator: this, name: 'open-dropdown' });
     }
 
 
