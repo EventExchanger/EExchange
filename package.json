@@ -1,6 +1,16 @@
 {
   "name": "eexchange",
-  "version": "1.27.4",
+  "description": "Redux alternative solution. With server side render.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "redux",
+    "alternative",
+    "boilerplate",
+    "event",
+    "ssr"
+  ],
+  "version": "1.27.5",
   "module": "./lib/esm/EExchange.js",
   "types": "./lib/esm/EExchange.d.ts",
   "files": [
@@ -9,6 +19,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/EventExchanger/EExchange"
+  },
+  "bugs": {
+    "url": "https://github.com/EventExchanger/EExchange/issues"
   },
   "dependencies": {
     "@types/node": "^16.0.0",

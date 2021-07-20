@@ -1,3 +1,7 @@
+## Description
+
+Redux alternative solution. With server side render. See [Sample project](https://github.com/EventExchanger/EExchanger.ReactTest)
+
 ## Usage
 
 1. yarn create react-app eexchanger.reacttest --template typescript
